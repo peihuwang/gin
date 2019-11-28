@@ -14,7 +14,29 @@ import (
 	_ "log"
 	"path/filepath"
 	"os"
+	"runtime"
 )
+
+var ostype = runtime.GOOS
+
+func GetProjectPath() string{
+	var projectPath string
+	projectPath, _ = os.Getwd()
+	return projectPath
+}
+
+func GetConfigPath() string{
+	path := GetProjectPath()
+	if ostype == "windows"{
+		path = path + "\\" + "config\\config.yaml"
+	}else if ostype == "linux"{
+		path = path +"/" + "config/config.yaml"
+	}else {
+		path = path +"/" + "config/config.yaml"
+	}
+	return  path
+}
+
 
 type Conf struct {
 	Database struct{
@@ -36,8 +58,8 @@ type Conf struct {
 var ConfSet *Conf
 
 func InitConfig()  {
-	dir, _ := os.Getwd()
-	filename :=dir+`/config/config.yaml`
+
+	filename :=GetConfigPath()
 
 	dir, err := filepath.Abs(filepath.Dir(filename))
 	if err != nil {
