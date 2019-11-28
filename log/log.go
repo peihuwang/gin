@@ -13,13 +13,15 @@ import (
 	"io"
 	"os"
 	"time"
+	"gin/config"
 )
 
 func WriteLog()  {
 	//gin 自带的log
 	gin.DisableConsoleColor()
 
-	filename :=`gin\log\day.log`
+
+	filename :=config.GetConfigPath()+`gin\log\day.log`
 
 	file, _ := os.Create(filename)
 
@@ -30,7 +32,7 @@ func WriteLog()  {
 // 日志写入文件
 func WriteLogToFile() gin.HandlerFunc {
 
-	fileName := `gin\log\`+time.Now().Format("2006-01-02")+`.log`
+	fileName := config.GetConfigPath()+`gin\log\`+time.Now().Format("2006-01-02")+`.log`
 	
 	_, e := os.Stat(fileName)
 	
