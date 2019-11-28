@@ -14,7 +14,7 @@ import (
 
 func Bootstrap()  {
 	//读取配置文件
-	config.RedisConfig()
+	config.InitConfig()
 
 	//链接mysql
 	mysqld.DbConnect()

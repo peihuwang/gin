@@ -13,6 +13,7 @@ import (
 	"log"
 	_ "log"
 	"path/filepath"
+	"os"
 )
 
 type Conf struct {
@@ -34,8 +35,9 @@ type Conf struct {
 
 var ConfSet *Conf
 
-func RedisConfig()  {
-	filename :=`gin/config/config.yaml`
+func InitConfig()  {
+	dir, _ := os.Getwd()
+	filename :=dir+`/config/config.yaml`
 
 	dir, err := filepath.Abs(filepath.Dir(filename))
 	if err != nil {
