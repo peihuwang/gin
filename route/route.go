@@ -29,10 +29,10 @@ func SetupRouter() *gin.Engine {
 	//路由组
 	user:=r.Group("/user")
 	user.POST("/login",controller.UserLogin)
+	user.POST("/add",controller.UserAdd)
 	user.Use(middlwware.TokenVerify)
 	{
 		user.POST("/list",controller.UserList)
-		user.POST("/add",controller.UserAdd)
 		user.POST("/delete",controller.UserDelete)
 	}
 
