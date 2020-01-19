@@ -30,7 +30,7 @@ func WriteLog()  {
 
 
 // 日志写入文件
-func WriteLogToFile() gin.HandlerFunc {
+func WriteLogByLogrusToFile() gin.HandlerFunc {
 
 	fileName := config.GetConfigPath()+`gin\log\`+time.Now().Format("2006-01-02")+`.log`
 	
@@ -89,4 +89,5 @@ func WriteLogToFile() gin.HandlerFunc {
 			body,
 		)
 	}
+
 }

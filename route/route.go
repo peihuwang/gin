@@ -18,7 +18,7 @@ func SetupRouter() *gin.Engine {
 
 	r := gin.Default()
 	//日记文件
-	r.Use(log.WriteLogToFile())
+	r.Use(log.WriteLogByLogrusToFile())
 
 
 	//中间件 ===========>全局中间件
